@@ -1,2 +1,11 @@
-# prophet-net-anomaly
-Prophet-based Network Anomaly Detection | Detect network traffic anomalies using Facebook Prophet with advanced filtering techniques like persistence and proximity analysis to reduce false positives.
+# Prophet-Net-Anomaly 🚀
+A lightweight, open-source network anomaly detection package leveraging **Facebook Prophet** for time-series modeling.  
+🔹 **Key Features**:  
+✔ Anomaly detection based on Prophet’s upper/lower confidence bounds  
+✔ **Persistence & Proximity Analysis** to minimize false positives  
+✔ Optimized for network data: traffic volume, packet loss, DDoS detection  
+✔ Sensitivity options to tune the model  
+
+📌 **Getting Started**
+```bash
+pip install prophet-net-anomaly
