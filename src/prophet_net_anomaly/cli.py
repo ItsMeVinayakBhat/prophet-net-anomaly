@@ -1,8 +1,8 @@
 import argparse
 import pandas as pd
 import plotly.io as pio
-from .anomaly_detector import AnomalyDetector
-from .visualization import plot_anomalies_interactive
+from prophet_net_anomaly.anomaly_detector import AnomalyDetector
+from prophet_net_anomaly.visualization import plot_anomalies_interactive
 
 def main():
     parser = argparse.ArgumentParser(description="Prophet-Net-Anomaly: Detect anomalies in network time series data.")
