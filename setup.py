@@ -9,10 +9,16 @@ setup(
         'pandas',
         'numpy',
         'prophet',
-        'matplotlib'
+        'matplotlib',
+        'plotly'  # Required for interactive visualization
     ],
-    author='Your Name',
-    author_email='your.email@example.com',
+    entry_points={
+        'console_scripts': [
+            'prophet-net-anomaly=prophet_net_anomaly.cli:main',
+        ],
+    },
+    author='Vinayak Bhat',
+    author_email='vinayak.sjcebhat@gmail.com',
     description='A Prophet-based network anomaly detection package',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
