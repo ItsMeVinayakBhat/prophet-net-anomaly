@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='prophet-net-anomaly',  # Must be unique on PyPI
-    version='0.1.0',  # Increment for new releases
+    version='0.1.1',  # Increment for new releases
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     install_requires=[
