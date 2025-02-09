@@ -1,31 +1,57 @@
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+import pandas as pd
+from anomaly_detector import AnomalyDetector
 
-def plot_anomalies(df, metric="packet_count"):
-    plt.figure(figsize=(12, 6))
+def plot_anomalies_interactive(df, metric="packet_count"):
+    fig = go.Figure()
 
-    # Plot actual data
-    plt.plot(df["ds"], df["y"], label="Actual", color="blue", alpha=0.6)
+    # Actual values
+    fig.add_trace(go.Scatter(
+        x=df["ds"], y=df["y"],
+        mode="lines", name="Actual",
+        line=dict(color="blue"),
+    ))
 
-    # Plot predicted values
-    plt.plot(df["ds"], df["yhat"], label="Predicted", color="green", linestyle="dashed")
+    # Predicted values
+    fig.add_trace(go.Scatter(
+        x=df["ds"], y=df["yhat"],
+        mode="lines", name="Predicted",
+        line=dict(color="green", dash="dash"),
+    ))
 
-    # Plot upper and lower bounds
-    plt.fill_between(df["ds"], df["yhat_lower"], df["yhat_upper"], color="gray", alpha=0.3, label="Prediction Range")
+    # Upper and Lower Bounds (Shaded Area)
+    fig.add_trace(go.Scatter(
+        x=df["ds"], y=df["yhat_upper"],
+        mode="lines", name="Upper Bound",
+        line=dict(color="gray"),
+    ))
+    fig.add_trace(go.Scatter(
+        x=df["ds"], y=df["yhat_lower"],
+        mode="lines", name="Lower Bound",
+        line=dict(color="gray"),
+        fill="tonexty", fillcolor="rgba(169, 169, 169, 0.3)",
+    ))
 
-    # Highlight anomalies
+    # Anomalies (Scatter points)
     anomalies = df[df["is_anomaly"]]
-    plt.scatter(anomalies["ds"], anomalies["y"], color="red", label="Anomalies", zorder=3)
+    fig.add_trace(go.Scatter(
+        x=anomalies["ds"], y=anomalies["y"],
+        mode="markers", name="Anomalies",
+        marker=dict(color="red", size=8, symbol="x"),
+    ))
 
-    plt.xlabel("Timestamp")
-    plt.ylabel(metric.replace("_", " ").title())
-    plt.legend()
-    plt.title(f"Anomaly Detection in {metric.replace('_', ' ').title()}")
-    plt.show()
+    # Layout settings
+    fig.update_layout(
+        title=f"Interactive Anomaly Detection in {metric.replace('_', ' ').title()}",
+        xaxis_title="Timestamp",
+        yaxis_title=metric.replace("_", " ").title(),
+        template="plotly_white",
+    )
+
+    # Show the interactive plot
+    fig.show()
 
 if __name__ == "__main__":
-    import pandas as pd
-    from anomaly_detector import AnomalyDetector
-
     # Load sample data
     df = pd.read_csv("../data/raw/sample_network_data.csv", parse_dates=["timestamp"])
 
@@ -33,5 +59,5 @@ if __name__ == "__main__":
     detector = AnomalyDetector()
     anomalies_df = detector.detect_anomalies(df, "packet_count")
 
-    # Plot results
-    plot_anomalies(anomalies_df, "packet_count")
+    # Show interactive plot
+    plot_anomalies_interactive(anomalies_df, "packet_count")
