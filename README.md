@@ -42,3 +42,31 @@ prophet-net-anomaly/
 ├── LICENSE                       # Open-source license
 ├── .gitignore                     # Ignore unnecessary files
 ```
+
+
+**Useful Commands for the Developers**
+
+*To install the dependencies*
+```
+pip install -r requirements.txt
+```
+
+*To Build and Upload to PyPI*
+
+```
+python3 -m build
+```
+
+```
+twine upload dist/*
+```
+
+*To Uninstall and Reinstall the prophet-net-anomaly*
+
+```
+pip uninstall prophet-net-anomaly -y
+```
+
+```
+pip install .
+```
