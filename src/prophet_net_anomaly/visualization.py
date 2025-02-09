@@ -2,8 +2,15 @@ import matplotlib.pyplot as plt
 
 def plot_anomalies(df, metric="packet_count"):
     plt.figure(figsize=(12, 6))
-    plt.plot(df["ds"], df["y"], label="Actual", color="blue")
+
+    # Plot actual data
+    plt.plot(df["ds"], df["y"], label="Actual", color="blue", alpha=0.6)
+
+    # Plot predicted values
     plt.plot(df["ds"], df["yhat"], label="Predicted", color="green", linestyle="dashed")
+
+    # Plot upper and lower bounds
+    plt.fill_between(df["ds"], df["yhat_lower"], df["yhat_upper"], color="gray", alpha=0.3, label="Prediction Range")
 
     # Highlight anomalies
     anomalies = df[df["is_anomaly"]]
