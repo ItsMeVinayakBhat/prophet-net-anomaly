@@ -63,10 +63,10 @@ python3 -m build
 twine upload dist/*
 ```
 
-*To Uninstall and Reinstall the prophet-net-anomaly*
+*To Uninstall and Reinstall the propano*
 
 ```
-pip uninstall prophet-net-anomaly -y
+pip uninstall propano -y
 ```
 
 ```
