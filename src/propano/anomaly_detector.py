@@ -26,6 +26,11 @@ class AnomalyDetector:
 
         return df
 
+def sigmoid_anomaly_score(actual, predicted, alpha=1.0, beta=0.5):
+    deviation = abs(actual - predicted)
+    return 1 / (1 + np.exp(-alpha * (deviation - beta)))
+
+
 if __name__ == "__main__":
     # Example usage
     df = pd.read_csv("../data/raw/sample_network_data.csv", parse_dates=["timestamp"])

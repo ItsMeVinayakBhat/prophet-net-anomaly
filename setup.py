@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='prophet-net-anomaly',  # Must be unique on PyPI
-    version='0.1.1',  # Increment for new releases
+    name='propano',  # Must be unique on PyPI
+    version='0.1.0',  # Increment for new releases
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     install_requires=[
@@ -14,7 +14,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'prophet-net-anomaly=prophet_net_anomaly.cli:main',
+            'propano=propano.cli:main',  # Update CLI entry point
         ],
     },
     author='Vinayak Bhat',

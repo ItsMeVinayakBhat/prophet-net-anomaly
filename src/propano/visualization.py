@@ -1,6 +1,6 @@
 import plotly.graph_objects as go
 import pandas as pd
-from prophet_net_anomaly.anomaly_detector import AnomalyDetector
+from propano.anomaly_detector import AnomalyDetector
 
 def plot_anomalies_interactive(df, metric="packet_count"):
     fig = go.Figure()

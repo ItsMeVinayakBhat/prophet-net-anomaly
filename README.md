@@ -1,4 +1,4 @@
-# Prophet-Net-Anomaly 🚀
+# Propano 🚀
 A lightweight, open-source network anomaly detection package leveraging **Facebook Prophet** for time-series modeling.  
 🔹 **Key Features**:  
 ✔ Anomaly detection based on Prophet’s upper/lower confidence bounds  
@@ -8,19 +8,21 @@ A lightweight, open-source network anomaly detection package leveraging **Facebo
 
 📌 **Getting Started**
 ```bash
-pip install prophet-net-anomaly
+pip install propano
 ```
 **Project Structure**
 ```bash
-prophet-net-anomaly/
+propano/
 ├── src/
-│   ├── prophet_net_anomaly/
+│   ├── propano/
 │   │   ├── __init__.py
 │   │   ├── anomaly_detector.py   # Core anomaly detection logic
+│   │   ├── cli.py                # Command-line interface (CLI)
 │   │   ├── utils.py              # Helper functions (e.g., data preprocessing)
 │   │   ├── visualization.py      # Functions for plotting anomalies
 │   ├── tests/
 │   │   ├── test_anomaly_detector.py  # Unit tests
+│   │   ├── test_cli.py               # Unit tests for CLI
 │   │   ├── test_utils.py
 │   ├── data/
 │   │   ├── raw/                  # Raw network traffic data
@@ -40,7 +42,7 @@ prophet-net-anomaly/
 ├── setup.py                      # Package setup script
 ├── requirements.txt              # Dependencies
 ├── LICENSE                       # Open-source license
-├── .gitignore                     # Ignore unnecessary files
+├── .gitignore                    # Ignore unnecessary files
 ```
 
 
